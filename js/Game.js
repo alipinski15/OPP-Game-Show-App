@@ -24,5 +24,13 @@
         const pulled_phrase = this.phrases[random_phrase];
         return pulled_phrase;
     }
+
+    startGame(){
+        const overlay = document.getElementById('overlay').hidden = 'true';
+        const random_phrase = this.getRandomPhrase();
+        const phrase = new Phrase(random_phrase.phrase);
+        phrase.addPhraseToDisplay();
+        this.activePhrase = phrase;
+    }
  }
 

@@ -8,8 +8,8 @@
     }
     addPhraseToDisplay(){
         const ul = document.getElementById('phrase').firstElementChild;
-        const li = document.createElement('li');
         for(let i = 0; i < this.phrase.length; i++){
+            const li = document.createElement('li');
             const letter = this.phrase[i];
             if(letter === ' '){
                 li.className = "space";
@@ -21,7 +21,6 @@
                 ul.appendChild(li)
             }
         }
-        console.log(li);
     }
 }
 
