@@ -7,7 +7,21 @@
          this.phrase = phrase.toLowerCase();
     }
     addPhraseToDisplay(){
-        const phrase_letters = this.phrase.split(' ');
-        console.log(phrase_letters);
+        const ul = document.getElementById('phrase').firstElementChild;
+        const li = document.createElement('li');
+        for(let i = 0; i < this.phrase.length; i++){
+            const letter = this.phrase[i];
+            if(letter === ' '){
+                li.className = "space";
+                li.innerHTML = ' ';
+                ul.appendChild(li);
+            } else {
+                li.className = `hide letter ${letter}`;
+                li.innerHTML = `${letter}`;
+                ul.appendChild(li)
+            }
+        }
+        console.log(li);
     }
 }
+
