@@ -6,4 +6,8 @@
      constructor(phrase){
          this.phrase = phrase.toLowerCase();
     }
+    addPhraseToDisplay(){
+        const phrase_letters = this.phrase.split(' ');
+        console.log(phrase_letters);
+    }
 }
