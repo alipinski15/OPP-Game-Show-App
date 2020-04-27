@@ -16,22 +16,6 @@
     }
 
     /**
-    * Creates phrases for use in game
-    * @return {array} An array of phrases that could be used in the game
-    */
-
-    // createPhrases(){
-    //     const phrases = [
-    //         {phrase: "Carpe Diem"},
-    //         {phrase: "Oh captain my captain"},
-    //         {phrase: "Just keep swimming"},
-    //         {phrase: "Youre killin me Smalls"},
-    //         {phrase: "Hang in there"}
-    //     ];
-    //     return phrases;
-    // }
-
-    /**
     * Selects random phrase from phrases property
     * @return {Object} Phrase object chosen to be used
     */
@@ -52,16 +36,13 @@
         phrase.addPhraseToDisplay();
     }
     
-    handleInteraction(){
-        const keys = document.querySelectorAll('.keyrow button');
-        const matched_letter = new Phrase(this.activePhrase.phrase);
-        keys.forEach(key => {
-            key.addEventListener('click', (e) => {
-                if(e.target === matched_letter){
-                    console.log('true');
-                }
-            });
-        });
+    /**
+    * Handles onscreen keyboard button clicks
+    * @param (HTMLButtonElement) button - The clicked button element
+    */
+
+    handleInteraction(button){
+        
     }
 
     /**
@@ -97,12 +78,16 @@
     * @param {boolean} gameWon - Whether or not the user won the game
     */
     gameOver(gameWon) {
-        const overlay = document.getElementById('game-over-message');
-            if(gameWon){
-                overlay.innerHTML = "You Won";
-            } else {
-                overlay.innerHTML = "Sorry you lost";
-            }
+        const overlay = document.getElementById('overlay');
+        const game_over_message = document.getElementById('game-over-message');
+        if(gameWon){
+            game_over_message.innerHTML = "You Won";
+            overlay.classList.add('win');
+        } else {
+            game_over_message.innerHTML = "Sorry you lost";
+            overlay.classList.add('lose');
+        }
+        overlay.classList.remove('start');
+        overlay.style.display = "inherit";
     }
-
 }
