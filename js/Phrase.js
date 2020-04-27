@@ -21,7 +21,7 @@
                 li.innerHTML = ' ';
                 ul.appendChild(li);
             } else {
-                li.className = `hide letter ${letter}`;
+                li.className = `hide letter`;
                 li.innerHTML = `${letter}`;
                 ul.appendChild(li)
             }
@@ -33,8 +33,28 @@
     * @param (string) letter - Letter to check
     */
 
-    // checkLetter(){
+    checkLetter(letter){
+        if(this.phrase.includes(letter)){
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-    // }
+
+    /**
+    * Displays passed letter on screen after a match is found
+    * @param (string) letter - Letter to display
+    */
+
+    showMatchedLetter(letter){
+        const phrase_letter = document.querySelectorAll('li[class = "hide letter"]');
+        for(let i = 0; i < phrase_letter.length; i++){
+            if(letter === phrase_letter[i].innerText){
+                phrase_letter[i].classList.remove('hide');
+                phrase_letter[i].classList.add('show');
+            } 
+        }
+    }
 }
 

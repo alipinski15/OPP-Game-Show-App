@@ -5,7 +5,13 @@
  class Game {
     constructor(){
         this.missed = 0;
-        this.phrases = this.createPhrases();
+        this.phrases = [
+            {phrase: "Carpe Diem"},
+            {phrase: "Oh captain my captain"},
+            {phrase: "Just keep swimming"},
+            {phrase: "Youre killin me Smalls"},
+            {phrase: "Hang in there"}
+            ];
         this.activePhrase = null;
     }
 
@@ -14,16 +20,16 @@
     * @return {array} An array of phrases that could be used in the game
     */
 
-    createPhrases(){
-        const phrases = [
-            {phrase: "Carpe Diem"},
-            {phrase: "Oh captain my captain"},
-            {phrase: "Just keep swimming"},
-            {phrase: "Youre killin me Smalls"},
-            {phrase: "Hang in there"}
-        ];
-        return phrases;
-    }
+    // createPhrases(){
+    //     const phrases = [
+    //         {phrase: "Carpe Diem"},
+    //         {phrase: "Oh captain my captain"},
+    //         {phrase: "Just keep swimming"},
+    //         {phrase: "Youre killin me Smalls"},
+    //         {phrase: "Hang in there"}
+    //     ];
+    //     return phrases;
+    // }
 
     /**
     * Selects random phrase from phrases property
@@ -32,8 +38,7 @@
 
     getRandomPhrase(){
         const random_phrase = Math.floor(Math.random() * this.phrases.length);
-        const pulled_phrase = this.phrases[random_phrase];
-        return pulled_phrase;
+        return this.phrases[random_phrase];
     }
 
     /**
@@ -42,14 +47,61 @@
 
     startGame(){
         document.getElementById('overlay').style.display = 'none';
-        const random_phrase = this.getRandomPhrase();
-        const phrase = new Phrase(random_phrase.phrase);
+        this.activePhrase = this.getRandomPhrase();
+        const phrase = new Phrase(this.activePhrase.phrase);
         phrase.addPhraseToDisplay();
-        this.activePhrase = phrase;
     }
     
     handleInteraction(){
         const keys = document.querySelectorAll('.keyrow button');
-        
+        const matched_letter = new Phrase(this.activePhrase.phrase);
+        console.log(matched_letter);
+        keys.forEach(key => {
+            key.addEventListener('click', (e) => {
+                if(e.target === matched_letter){
+                    console.log('true');
+                }
+            });
+        });
     }
+
+    /**
+    * Checks for winning move
+    * @return {boolean} True if game has been won, false if game wasn't
+    won
+    */
+    
+    checkForWin(){
+        const hidden = document.querySelectorAll('li[class = "hide letter"]');
+        if(hidden.length > 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+    * Increases the value of the missed property
+    * Removes a life from the scoreboard
+    * Checks if player has remaining lives and ends game if player is out
+    */
+    removeLife() {
+        if(this.missed === 5){
+            const lost = this.checkForWin();
+            this.gameOver(lost);
+        } else {
+            const heart = document.querySelectorAll('#scoreboard li');
+            heart.src = 'images/lostheart.png'
+            console.log(heart);
+        }
+    }
+
+    /**
+    * Displays game over message
+    * @param {boolean} gameWon - Whether or not the user won the game
+    */
+    // gameOver(gameWon) {
+
+    // }
+
 }
