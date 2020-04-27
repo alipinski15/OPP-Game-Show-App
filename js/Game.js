@@ -55,7 +55,6 @@
     handleInteraction(){
         const keys = document.querySelectorAll('.keyrow button');
         const matched_letter = new Phrase(this.activePhrase.phrase);
-        console.log(matched_letter);
         keys.forEach(key => {
             key.addEventListener('click', (e) => {
                 if(e.target === matched_letter){
@@ -73,11 +72,8 @@
     
     checkForWin(){
         const hidden = document.querySelectorAll('li[class = "hide letter"]');
-        if(hidden.length > 0){
-            return true;
-        } else {
-            return false;
-        }
+        return hidden.length > 0;
+     
     }
 
     /**
@@ -85,14 +81,14 @@
     * Removes a life from the scoreboard
     * Checks if player has remaining lives and ends game if player is out
     */
+
     removeLife() {
+        this.missed += 1;
         if(this.missed === 5){
-            const lost = this.checkForWin();
-            this.gameOver(lost);
+            this.gameOver(false);
         } else {
             const heart = document.querySelectorAll('#scoreboard li');
-            heart.src = 'images/lostheart.png'
-            this.missed += 1;
+            heart.src = 'images/lostheart.png';
         }
     }
 
@@ -100,8 +96,13 @@
     * Displays game over message
     * @param {boolean} gameWon - Whether or not the user won the game
     */
-    // gameOver(gameWon) {
-
-    // }
+    gameOver(gameWon) {
+        const overlay = document.getElementById('game-over-message');
+            if(gameWon){
+                overlay.innerHTML = "You Won";
+            } else {
+                overlay.innerHTML = "Sorry you lost";
+            }
+    }
 
 }

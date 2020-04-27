@@ -26,7 +26,7 @@ const start_button = document.getElementById('btn__reset');
 
 start_button.addEventListener('click', (e) => { 
     e.target = game.startGame();
-    console.log(game.removeLife());
+    console.log(game.gameOver());
 });
 
 
