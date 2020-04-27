@@ -42,7 +42,12 @@
     */
 
     handleInteraction(button){
-        
+        button.disabled = 'true';
+        const selected_key = button;
+        const phrase = this.activePhrase.phrase
+        // if(phrase.checkLetter(letter) === true){
+        //     console.log(selected_key);
+        // }
     }
 
     /**
@@ -68,7 +73,7 @@
         if(this.missed === 5){
             this.gameOver(false);
         } else {
-            const heart = document.querySelectorAll('#scoreboard li');
+            const heart = document.querySelector('img[src="images/liveHeart.png"]');
             heart.src = 'images/lostheart.png';
         }
     }
@@ -77,11 +82,12 @@
     * Displays game over message
     * @param {boolean} gameWon - Whether or not the user won the game
     */
+
     gameOver(gameWon) {
         const overlay = document.getElementById('overlay');
         const game_over_message = document.getElementById('game-over-message');
         if(gameWon){
-            game_over_message.innerHTML = "You Won";
+            game_over_message.innerHTML = "You Won!";
             overlay.classList.add('win');
         } else {
             game_over_message.innerHTML = "Sorry you lost";

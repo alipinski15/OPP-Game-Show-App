@@ -23,10 +23,16 @@
 const game = new Game();
 
 const start_button = document.getElementById('btn__reset');
+const keys = document.querySelectorAll('.keyrow button');
 
 start_button.addEventListener('click', (e) => { 
     e.target = game.startGame();
-    
 });
+
+for(let i = 0; i < keys.length; i++){
+    keys[i].addEventListener('click', (e) => {
+        game.handleInteraction(e.target)
+    });
+}
 
 
