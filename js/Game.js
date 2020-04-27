@@ -92,7 +92,7 @@
         } else {
             const heart = document.querySelectorAll('#scoreboard li');
             heart.src = 'images/lostheart.png'
-            console.log(heart);
+            this.missed += 1;
         }
     }
 
