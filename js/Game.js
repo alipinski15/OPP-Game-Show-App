@@ -100,7 +100,7 @@
             overlay.classList.add('win');
             this.resetGame();
         } else {
-            game_over_message.innerHTML = "Sorry you lost";
+            game_over_message.innerHTML = "Sorry you lost, Please try again.";
             overlay.classList.add('lose');
             this.resetGame();
         }
