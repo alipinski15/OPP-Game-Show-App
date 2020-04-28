@@ -108,6 +108,11 @@
         overlay.style.display = "inherit";
     }
 
+
+    /**
+     * The next three methods reset the game when either the game is won or lost.
+     */
+    
     resetLife(){
         const hearts = document.querySelectorAll('img');
         hearts.forEach(heart => {
