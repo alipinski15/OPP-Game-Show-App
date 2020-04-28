@@ -31,9 +31,8 @@
 
     startGame(){
         document.getElementById('overlay').style.display = 'none';
-        this.activePhrase = this.getRandomPhrase();
-        const phrase = new Phrase(this.activePhrase.phrase);
-        phrase.addPhraseToDisplay();
+        this.activePhrase = new Phrase(this.getRandomPhrase().phrase);
+        this.activePhrase.addPhraseToDisplay();
     }
     
     /**
@@ -43,11 +42,17 @@
 
     handleInteraction(button){
         button.disabled = 'true';
-        const selected_key = button;
-        const phrase = this.activePhrase.phrase
-        // if(phrase.checkLetter(letter) === true){
-        //     console.log(selected_key);
-        // }
+        if(this.activePhrase.checkLetter(button.textContent) === true){
+            button.classList.add('chosen');
+            this.activePhrase.showMatchedLetter(button.textContent);
+            this.checkForWin();
+            if(this.checkForWin()){
+                this.gameOver(true)
+            }
+        } else {
+            button.classList.add('wrong');
+            this.removeLife();
+        }
     }
 
     /**
@@ -58,7 +63,11 @@
     
     checkForWin(){
         const hidden = document.querySelectorAll('li[class = "hide letter"]');
-        return hidden.length > 0;
+        if(hidden.length === 0){
+            return true;
+        } else {
+            return false;
+        }
      
     }
 
@@ -74,7 +83,7 @@
             this.gameOver(false);
         } else {
             const heart = document.querySelector('img[src="images/liveHeart.png"]');
-            heart.src = 'images/lostheart.png';
+            heart.src = "images/lostheart.png";
         }
     }
 
@@ -89,11 +98,36 @@
         if(gameWon){
             game_over_message.innerHTML = "You Won!";
             overlay.classList.add('win');
+            this.resetGame();
         } else {
             game_over_message.innerHTML = "Sorry you lost";
             overlay.classList.add('lose');
+            this.resetGame();
         }
         overlay.classList.remove('start');
         overlay.style.display = "inherit";
+    }
+
+    resetLife(){
+        const hearts = document.querySelectorAll('img');
+        hearts.forEach(heart => {
+            heart.src = "images/liveHeart.png";
+            this.missed = 0;
+        });
+        
+    }
+
+    resetKeyboard(){
+        const keys = document.querySelectorAll('.keyrow button');
+        keys.forEach(key => {
+            key.disabled = false;
+            key.className = "key";
+        });
+    }
+
+    resetGame(){
+        this.resetLife();
+        this.resetKeyboard();
+        this.activePhrase.resetPhrase();
     }
 }

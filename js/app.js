@@ -2,37 +2,43 @@
  * Project 4 - OOP Game App
  * app.js */
 
-// const logPhrase = (phrase) => {
-//     console.log(`Phrase - phrase: `, phrase.phrase);
-// };
-// 
-
-// const phrase = new Phrase();
-// phrase.addPhraseToDisplay();
-
-// const game = new Game();
-// game.startGame();
-// const randomPhrase = game.getRandomPhrase();
-// const phrase = new Phrase(randomPhrase.phrase);
-// phrase.addPhraseToDisplay();
-
-// const game = new Game();
-// game.startGame();
-// console.log(`Active Phrase - phrase: ${game.activePhrase.phrase}`);
 
 const game = new Game();
 
-const start_button = document.getElementById('btn__reset');
-const keys = document.querySelectorAll('.keyrow button');
+//add the ability to click the Start Game button to start. 
 
-start_button.addEventListener('click', (e) => { 
-    e.target = game.startGame();
+const start_button = document.getElementById('btn__reset');
+start_button.addEventListener('click', event => game.startGame());
+
+//Add the ability to press the Enter(return) key to start the game. 
+
+document.addEventListener('keyup', (e) => {
+    if(e.key === 'Enter'){
+        game.startGame();
+    }
 });
+
+//Creates the ability to click on the onscreen keyboard, or use the keyboard to select letters/
+
+const keys = document.querySelectorAll('.key');
 
 for(let i = 0; i < keys.length; i++){
     keys[i].addEventListener('click', (e) => {
         game.handleInteraction(e.target)
     });
 }
+
+for(let j = 0; j < keys.length; j++){
+    keys[j].addEventListener('keyup', (e) => {
+        if(e.key === keys[j].textContent){
+            game.handleInteraction(e.key);
+        }
+    });
+
+}
+
+
+
+
 
 

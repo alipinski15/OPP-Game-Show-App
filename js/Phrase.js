@@ -53,5 +53,10 @@
             } 
         }
     }
+
+    resetPhrase(){
+        const ul = document.getElementById('phrase');
+        ul.innerHTML = '<ul></ul>'
+    }
 }
 
