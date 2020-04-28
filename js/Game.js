@@ -82,8 +82,8 @@
         if(this.missed === 5){
             this.gameOver(false);
         } else {
-            const heart = document.querySelector('img[src="images/liveHeart.png"]');
-            heart.src = "images/lostheart.png";
+            const heart = document.querySelector('img[src="images/live.png"]');
+            heart.src = "images/lost.png";
         }
     }
 
@@ -118,7 +118,7 @@
     resetLife(){
         const hearts = document.querySelectorAll('img');
         hearts.forEach(heart => {
-            heart.src = "images/liveHeart.png";
+            heart.src = "images/live.png";
             this.missed = 0;
         });
         

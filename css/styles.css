@@ -224,4 +224,8 @@ button {
   color: var(--color-lose);
 }
 
+/* scoreboard */
 
+.tries{
+  margin: 0px;
+}
