@@ -28,6 +28,7 @@ body {
   flex-direction: column;
   display: flex;
   height: 100vh;
+  background-color: #181b1c;
 }
 
 li, ol, ul {
@@ -81,16 +82,18 @@ button {
 
 #phrase ul li{
   margin-top: 15px;
+  background-color: #26282a;
 }
 
 /* Title */
 
 .header {
-  color: #3a3f58;
+  color: #e8e6e3;
 }
 
 
 /* Phrase */
+
 
 .letter {
   font-size: var(--font-size-medium);
@@ -111,7 +114,7 @@ button {
 
 .show {
   color: #fff;
-  background-color: #4ac0d5;
+  background-color: #4ad584;
   font-size: 20px;
   height: 65px;
   width: 65px;
@@ -130,6 +133,11 @@ button {
   justify-content: center;
 }
 
+.key {
+  background-color: #212324;
+  color: #005ccc;
+}
+
 .chosen {
   background: #3a3f58;
   border-radius: 5px;
@@ -138,7 +146,7 @@ button {
 }
 
 .wrong {
-  background: #f7a964;
+  background: #f76464;
   color: #FFFFFF;
 }
 
