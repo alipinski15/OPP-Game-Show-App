@@ -97,10 +97,12 @@
         const game_over_message = document.getElementById('game-over-message');
         if(gameWon){
             game_over_message.innerHTML = "You Won!";
+            overlay.className.remove('lose');
             overlay.classList.add('win');
             this.resetGame();
         } else {
             game_over_message.innerHTML = "Sorry you lost, Please try again.";
+            overlay.className.remove('win');
             overlay.classList.add('lose');
             this.resetGame();
         }
@@ -112,7 +114,7 @@
     /**
      * The next three methods reset the game when either the game is won or lost.
      */
-    
+
     resetLife(){
         const hearts = document.querySelectorAll('img');
         hearts.forEach(heart => {

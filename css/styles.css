@@ -12,7 +12,7 @@
   --color-keys: #37474F;
   --color-keys-light: #E5E5E5;
   --font-size-large: 60px;
-  --font-size-medium: 20px;
+  --font-size-medium: 17px;
   --transition: all .2s ease-in-out;
 }
 
@@ -20,7 +20,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Press Start 2P','Montserrat', sans-serif;
 }
 
 body {
@@ -107,7 +107,7 @@ button {
   font-size: var(--font-size-medium);
   height: 65px;
   width: 65px;
-  padding: 20px 1px 0 1px;
+  padding: 25px 1px 0 1px;
   margin-right: 2px;
   color: transparent;
   background: var(--color-neutral-light);
@@ -121,10 +121,10 @@ button {
 .show {
   color: #fff;
   background-color: #31b8bd;
-  font-size: 20px;
+  font-size: 17px;
   height: 65px;
   width: 65px;
-  padding: 20px 1px 0 1px;
+  padding: center;
   margin-right: 2px;
   border-radius: 5px;
   -webkit-animation-duration: .5s;
@@ -223,3 +223,5 @@ button {
 .lose a {
   color: var(--color-lose);
 }
+
+
