@@ -83,7 +83,15 @@ button {
 #phrase ul li{
   margin-top: 15px;
   background-color: #26282a;
+  animation-name: transition;
+  animation-duration: 1s;
 }
+
+@keyframes transition {
+  from {background-color: #fff;}
+  to {background-color: #26282a;}
+}
+
 
 /* Title */
 
@@ -110,11 +118,9 @@ button {
   width: 15px;
 }
 
-
-
 .show {
   color: #fff;
-  background-color: #4ad584;
+  background-color: #31b8bd;
   font-size: 20px;
   height: 65px;
   width: 65px;
@@ -135,7 +141,14 @@ button {
 
 .key {
   background-color: #212324;
-  color: #005ccc;
+  color: #1170ca;
+  animation-name: keys;
+  animation-duration: 5s;
+}
+
+@keyframes keys {
+  from {color: #212425;}
+  to {color: #1170ca;}
 }
 
 .chosen {

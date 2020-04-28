@@ -50,6 +50,7 @@
             if(letter === phrase_letter[i].innerText){
                 phrase_letter[i].classList.remove('hide');
                 phrase_letter[i].classList.add('show');
+                phrase_letter[i].style.backgroundColor = "#31b8bd";
             } 
         }
     }
