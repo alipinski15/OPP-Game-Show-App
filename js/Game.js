@@ -2,6 +2,10 @@
  * Project 4 - OOP Game App
  * Game.js */
 
+/**
+ * Creates a class for the Game.
+ */
+
  class Game {
     constructor(){
         this.missed = 0;
