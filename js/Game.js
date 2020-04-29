@@ -45,7 +45,6 @@
     */
 
     handleInteraction(button){
-        button.disabled = 'true';
         if(this.activePhrase.checkLetter(button.textContent) === true){
             button.classList.add('chosen');
             this.activePhrase.showMatchedLetter(button.textContent);
@@ -53,10 +52,11 @@
             if(this.checkForWin()){
                 this.gameOver(true)
             }
-        } else {
+        } else if(!button.disabled){
             button.classList.add('wrong');
             this.removeLife();
         }
+        button.disabled = 'true';
     }
 
     /**
