@@ -40,8 +40,3 @@ document.addEventListener('keyup', (e) => {
         game.handleInteraction(button);
     }
 });
-
-
-
-
-
