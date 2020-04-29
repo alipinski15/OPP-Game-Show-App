@@ -28,14 +28,7 @@ for(let i = 0; i < keys.length; i++){
     });
 }
 
-for(let j = 0; j < keys.length; j++){
-    keys[j].addEventListener('keyup', (e) => {
-        if(e.key === keys[j].textContent){
-            game.handleInteraction(e.key);
-        }
-    });
 
-}
 document.addEventListener('keyup', (e) => {
     if(e.keyCode >64 && e.keyCode < 91){
         let button;
