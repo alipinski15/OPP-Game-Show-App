@@ -45,6 +45,7 @@
     */
 
     handleInteraction(button){
+        button.disabled = true;
         if(this.activePhrase.checkLetter(button.textContent) === true){
             button.classList.add('chosen');
             this.activePhrase.showMatchedLetter(button.textContent);
@@ -52,11 +53,10 @@
             if(this.checkForWin()){
                 this.gameOver(true)
             }
-        } else if(!button.disabled){
+        } else if(button.disabled){
             button.classList.add('wrong');
             this.removeLife();
         }
-        button.disabled = 'true';
     }
 
     /**
@@ -125,7 +125,6 @@
             heart.src = "images/live.png";
             this.missed = 0;
         });
-        
     }
 
     resetKeyboard(){
