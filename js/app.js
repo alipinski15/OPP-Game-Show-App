@@ -18,7 +18,7 @@ document.addEventListener('keyup', (e) => {
     }
 });
 
-//Creates the ability to click on the onscreen keyboard, or use the keyboard to select letters/
+//Creates the ability to click on the onscreen keyboard, or use the keyboard to select letters./
 
 const keys = document.querySelectorAll('.key');
 
